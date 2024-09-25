@@ -8,8 +8,10 @@
  *	@since	
  */
 public class MVCipher {
-	private int keyWord;
-	private int;
+	private String keyWord = "";
+	private int encryptDecrypt;
+	private String encryptFile ="";
+	private String encryptFile="";
 	// fields go here
 		
 	/** Constructor */
@@ -31,18 +33,32 @@ public class MVCipher {
 		   Use the Prompt class to get user input */
 		System.out.println("Please input a word to use as key(letters only");
 		keyWord = prompt.getString();
+		if(keyWord.length<3){
+			System.out.println("ERROR: Key must be all letters and at least"
+			 + " 3 characters long");
+			System.out.println("Please input a word to use as key(letters" 
+			+ " only)");
+			keyWord = prompt.getString();
+		}
 		
 		/* Prompt for encrypt or decrypt */
-			
+			System.out.println("Encrypt or decrypt? (1,2)");
+			encryptDecrypt = prompt.getInt();
 			
 		/* Prompt for an input file name */
-		
-		
-		/* Prompt for an output file name */
+		if(encryptDecrypt ==1){
+			System.out.println("Name of file to encrypt");
+			encryptFile = in.nextLine();
+		}
+		else {
+			System.out.println("Name of file to decrypt");
+			decryptFile = in.nextLine();
+		}
 		
 		
 		/* Read input file, encrypt or decrypt, and print to output file */
-		
+		Scanner encrypt = FileUtils.openToRead(encryptFile);
+		Scanner decrypt = FileUtils.openToRead(decryptFile);
 		
 		/* Don't forget to close your output file */
 	}
